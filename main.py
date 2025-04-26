@@ -1,10 +1,14 @@
-from src.vacancies import Vacancy
+from src.api_interactions import HH_API
 from src.filehandler import JSONFileHandler
-from src.api_interactions import hh_API
+from src.vacancies import Vacancy
 
 
-def user_interaction():
-    hh_api = hh_API()
+def user_interaction() -> None:
+    """
+        Основная функция взаимодействия с пользователем.
+        Предоставляет меню для работы с вакансиями и обработки пользовательского ввода.
+    """
+    hh_api = HH_API()
     file_handler = JSONFileHandler()
 
     while True:
@@ -66,8 +70,8 @@ def user_interaction():
             url = input("Введите ссылку на вакансию: ")
             id = int(input("Введите ID вакансии"))
 
-            vacancy = Vacancy(id=id, name=name, company=company, salary=salary, url=url)
-            file_handler.add_vacancy(vacancy.to_dict())
+            vacancy_add: Vacancy = Vacancy(id=id, name=name, company=company, salary=salary, url=url)
+            file_handler.add_vacancy(vacancy_add.to_dict())
             print("Вакансия добавлена в файл.")
 
         elif choice == '5':
