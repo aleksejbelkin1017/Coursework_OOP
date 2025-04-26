@@ -1,7 +1,9 @@
-import pytest
 from unittest.mock import patch
-from src.vacancies import Vacancy
+
+import pytest
+
 from src.filehandler import JSONFileHandler
+from src.vacancies import Vacancy
 
 
 @pytest.fixture
